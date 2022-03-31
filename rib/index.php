@@ -10,14 +10,21 @@
 
 <body>
     <?php
+    include_once("rib.class.php");
     function my_var_dump($var)
     {
         echo "<pre style='background-color: orange; border: 2px solid black'>";
         print_r($var);
+        // var_dump($var);
         echo "</pre>";
     }
-    $validator = new RIBValidator();
+    $validator = new RIBValidator("12345", "67890", "000A56b77H88", "92");
     my_var_dump($validator);
+    if ($validator->isValid()) {
+        echo "<p> Ce RIB est valide </p>";
+    } else {
+        echo "<p> Ce RIB est invalide ! </p>";
+    }
     ?>
 </body>
 
