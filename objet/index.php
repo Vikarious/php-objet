@@ -9,35 +9,54 @@
 </head>
 
 <body>
-    <h1>Introduction php orienté objet</h1>
+    <h1>PHP Objet</h1>
 
     <h2>Instanciation</h2>
     <?php
-    include_once("./user.class.php");
-    $user1 = new User();
-    $user2 = new User();
-    $user3 = new User();
-    $user4 = new User();
-
-    $user1->setPseudo('Dupond');
-    $user1->setEMail("test@gmail.com");
-
-    $user2->setPseudo('Jean');
-    $user3->setPseudo('Bastien');
-    $user4->setPseudo('123456');
-
-    if ($user1->envoyerEMail("le titre", "le texte du mail")) {
-        echo "<p> mail envoyé </p>";
-    } else {
-        echo "<p> mail pas envoyé </p>";
+    function my_var_dump($var)
+    {
+        echo "<pre style='background-color: orange; border: 2px solid black'>";
+        print_r($var);
+        echo "</pre>";
     }
 
-    var_dump($user1);
+    include_once("user.class.php");
+    $user1 = new User("Dupond", "email@mail.com", "DUP");
+    $user2 = new User("Durant", "email2@mail.com", "DUR");
+    $user3 = new User("Duboit", "email3@mail.com", "DUB");
+    $user4 = new User("1234", "1234@mail.com", "123");
+
+    //$user1->pseudo = "Dupont"; Si la propriété pseudo était public
+    $user1->setPseudo("Dupont"); // On passe par un setter car propriété private
+    $user1->setEmail("nono@cogitium.com");
+    $user2->setPseudo("Durand");
+    $user3->setPseudo("Dubois");
+    $user4->setPseudo("123456789");
+
+    if ($user1->envoyerEMail("Création du user")) {
+        echo "<p>Mail envoyé !</p>";
+    } else {
+        echo "<p>Mail non envoyé !</p>";
+    }
+
+    my_var_dump($user1);
 
     $user1->bloquer();
 
-    var_dump($user1);
+    my_var_dump($user1);
+    my_var_dump($user2);
+    my_var_dump($user3);
+    my_var_dump($user4);
     ?>
+
+    <h2>Héritage</h2>
+
+    <?php
+    include_once("admin.class.php");
+    $admin1 = new Admin("Admin1", "admin1@mail.com", "ADM");
+    my_var_dump($admin1);
+    ?>
+
 </body>
 
 </html>
