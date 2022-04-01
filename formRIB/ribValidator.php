@@ -22,10 +22,10 @@ class RIBValidator
             "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
             "12345678912345678923456789"
         );
-        my_var_dump($account);
+        // my_var_dump($account);
 
         $key = 97 - ((89 * $this->bankCode + 15 * $this->agencyCode + 3 * $account) % 97);
-        my_var_dump($key);
+        // my_var_dump($key);
         return $key === $this->ribKey;
     }
 }
